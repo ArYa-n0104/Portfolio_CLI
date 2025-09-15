@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Terminal-themed Portfolio Design System */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Terminal Color Palette */
+    --background: 220 13% 8%;
+    --foreground: 120 100% 85%;
+
+    /* Terminal UI Colors */
+    --card: 220 13% 12%;
+    --card-foreground: 120 100% 85%;
+    
+    --popover: 220 13% 10%;
+    --popover-foreground: 120 100% 85%;
+    
+    /* Terminal Green Primary */
+    --primary: 120 100% 50%;
+    --primary-foreground: 220 13% 8%;
+    
+    /* Electric Blue Secondary */
+    --secondary: 200 100% 60%;
+    --secondary-foreground: 220 13% 8%;
+    
+    /* Amber Accent */
+    --accent: 45 100% 60%;
+    --accent-foreground: 220 13% 8%;
+    
+    /* Muted Terminal Colors */
+    --muted: 220 13% 15%;
+    --muted-foreground: 0 0% 65%;
+    
+    /* Error Red */
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Terminal Borders */
+    --border: 120 100% 25%;
+    --input: 220 13% 18%;
+    --ring: 120 100% 50%;
+    
+    --radius: 0.375rem;
+    
+    /* Terminal Specific Colors */
+    --terminal-green: 120 100% 50%;
+    --terminal-blue: 200 100% 60%;
+    --terminal-amber: 45 100% 60%;
+    --terminal-red: 0 75% 60%;
+    --terminal-purple: 280 100% 70%;
+    
+    /* Gradients */
+    --gradient-terminal: linear-gradient(135deg, hsl(var(--terminal-green)), hsl(var(--terminal-blue)));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--terminal-green) / 0.2), hsl(var(--terminal-blue) / 0.2));
+    
+    /* Shadows */
+    --shadow-terminal: 0 0 20px hsl(var(--terminal-green) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--terminal-green) / 0.2);
+    
+    /* Animations */
+    --transition-terminal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+  }
+}
+
+@layer components {
+  /* Terminal Window */
+  .terminal-window {
+    @apply bg-card border border-border rounded-lg overflow-hidden shadow-2xl;
+    box-shadow: var(--shadow-terminal);
+  }
+  
+  .terminal-header {
+    @apply bg-muted px-4 py-2 flex items-center gap-2;
+  }
+  
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+  
+  .terminal-dot-red {
+    @apply bg-red-500;
+  }
+  
+  .terminal-dot-yellow {
+    @apply bg-yellow-500;
+  }
+  
+  .terminal-dot-green {
+    @apply bg-green-500;
+  }
+  
+  /* Typewriter Effect */
+  .typewriter {
+    @apply font-mono;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 2s steps(40) forwards;
+  }
+  
+  .cursor {
+    @apply inline-block w-3 bg-primary;
+    animation: blink 1s infinite;
+  }
+  
+  /* Glowing Effects */
+  .glow-primary {
+    @apply text-primary;
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+  
+  .glow-secondary {
+    @apply text-secondary;
+    text-shadow: 0 0 10px hsl(var(--secondary) / 0.5);
+  }
+  
+  .glow-accent {
+    @apply text-accent;
+    text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  
+  @keyframes terminal-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--terminal-green) / 0.2);
+    }
+    50% { 
+      box-shadow: 0 0 30px hsl(var(--terminal-green) / 0.4);
+    }
+  }
+  
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
